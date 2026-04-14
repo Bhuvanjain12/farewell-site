@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body, html {
+            margin: 0; padding: 0; min-height: 100%;
+            font-family: 'Amita', cursive;
+            background-color: #fdf5e6;
+        }
+
+        /* Pehla Page: Name Input */
+        #landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        
+        h1 { color: #8b4513; margin-bottom: 10px; }
+
+        input {
+            padding: 12px;
+            font-family: 'Amita';
+            font-size: 1.3rem;
+            border: none;
+            border-bottom: 2px solid #8b4513;
+            background: transparent;
+            outline: none;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            color: #4a3728;
+        }
+
+        .btn-main {
+            margin-top: 40px;
+            padding: 12px 50px;
+            font-family: 'Amita';
+            background: #8b4513;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Doosra Page: Final Letter */
+        #letter-page {
+            display: none; /* Shuruat mein chhupa rahega */
+            position: relative;
+            min-height: 100vh;
+            padding: 80px 25px 60px;
+            box-sizing: border-box;
+            background-color: #fdf5e6;
+            color: #4a3728;
+        }
+
+        /* Top Airmail Border */
+        #letter-page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 12px;
+            background: repeating-linear-gradient(-45deg, #d92027, #d92027 20px, #fff 20px, #fff 40px, #335d92 40px, #335d92 60px, #fff 60px, #fff 80px);
+        }
+
+        /* Vintage Stamp */
+        .stamp-box {
+            position: absolute;
+            top: 40px;
+            right: 25px;
+            width: 80px;
+            height: 80px;
+            border: 3px double #b22222;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(15deg);
+            color: #b22222;
+            font-size: 0.65rem;
+            text-align: center;
+            font-weight: bold;
+            opacity: 0.5;
+            line-height: 1.2;
+        }
+
+        .content {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        h2 { font-size: 1.8rem; margin-bottom: 30px; color: #8b4513; }
+        p { font-size: 1.2rem; margin-bottom: 22px; line-height: 1.6; }
+
+        .line-break {
+            width: 100%;
+            height: 1px;
+            background: #8b4513; 
+            margin: 40px 0 20px 0;
+            opacity: 0.3;
+        }
+
+        .footer {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #b8860b;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="landing-page">
+        <h1>What's your name?</h1>
+        <input type="text" id="userName" placeholder="Type here..." autocomplete="off">
+        <button class="btn-main" onclick="openMyLetter()">Open Letter ✨</button>
+    </div>
+
+    <div id="letter-page">
+        <div class="stamp-box">CLASS OF<br>PHARMA<br>2026</div>
+        
+        <div class="content">
+            <h2 id="displayName">Dear Senior,</h2>
+            
+            <p>We came here thinking seniors were scary… turns out you were just slightly more experienced versions of us 😭</p>
+            
+            <p>Somewhere between last-minute submissions, random canteen runs, and inside jokes no one else understood, you made this place feel like more than just a college.</p>
+            
+            <p>You made college life easier, funnier, and way more memorable for us.</p>
+            
+            <p>It’s going to feel weird not seeing you around anymore, but we know you’re going to do amazing things ahead. Just remember us when you become successful… we’ll be taking full credit 😌</p>
+            
+            <div class="line-break"></div>
+            
+            <div class="footer">
+                With love,<br>
+                Your Juniors 💛
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openMyLetter() {
+            // 1. Naam uthao input se
+            var nameValue = document.getElementById('userName').value;
+            
+            // 2. Check karo naam khali toh nahi hai
+            if (nameValue.trim() !== "") {
+                // 3. Letter mein naam set karo
+                document.getElementById('displayName').innerText = "Dear " + nameValue + " ,";
+                
+                // 4. Input page chhupao aur Letter page dikhao
+                document.getElementById('landing-page').style.display = "none";
+                document.getElementById('letter-page').style.display = "block";
+                
+                // 5. Page ko top pe scroll kar do
+                window.scrollTo(0,0);
+            } else {
+                alert("Pehle apna naam toh likho! 😉");
+            }
+        }
+    </script>
+
+</body>
+</html>
